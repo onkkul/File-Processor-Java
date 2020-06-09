@@ -29,8 +29,20 @@ public class Driver {
         	WordProcessor wordProcessor = new WordProcessor(args[1], args[2]);
 
         	String word = fileProcessor.poll();
+        	int index = 1;
           	while(word != null){
-        		System.out.println(word);
+
+        		String rotatedWordd = wordProcessor.rotateWord(word, index);
+        		System.out.print( word);
+        		System.out.print("\t" + rotatedWordd);
+        		System.out.print("\t" + index);
+        		System.out.println("");
+        		index++;
+        		
+        		if (word.endsWith(".")){
+        			index = 1;
+        		}
+
         		word = fileProcessor.poll();
         	}
         }

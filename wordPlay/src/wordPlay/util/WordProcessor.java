@@ -50,9 +50,11 @@ public class WordProcessor{
     }
 
 
-    public void rotateWord(String word, int index) throws Exception, IOException{
+    public String rotateWord(String word, int index) throws Exception, IOException{
         String rotatedWord = this.stringRotator.rotateString(word, index);
         this.results.writeRotated(rotatedWord);
+
+        return rotatedWord;
     }
 
     public void calculateMatrix(String word) throws Exception, IOException{
