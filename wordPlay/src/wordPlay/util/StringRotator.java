@@ -2,25 +2,49 @@ package wordPlay.util;
 import java.util.Arrays;
 import java.io.IOException;
 
+/**
+* StringRotator is a utility to be used to rotate the word.
+*
+* @author Onkar Kulkarni
+*/
 public class StringRotator{
+    
+    /*
+    * Constructor for WordProcessor class
+    * 
+    * @return void
+    */
     public StringRotator(){}
 
+    /*
+    * Method to rotate the string/word
+    * 
+    * @return rotated word
+    */
     public String rotateString(String word, int index){ 
-     char[] A = word.toCharArray();
-     int len = A.length;
-     index %= len;
-     reverse(A, 0, len - index - 1);
-     reverse(A, len - index, len - 1);
-     reverse(A, 0, len - 1);
+        char[] letters = word.toCharArray();
+        int len = letters.length;
+        index %= len;
+        reverse(letters, 0, len - index - 1);
+        reverse(letters, len - index, len - 1);
+        reverse(letters, 0, len - 1);
 
-     return Arrays.toString(A);
+        word = new String(letters);
+
+        return word;
     }
 
-    private static void reverse(char[] str, int start, int end){
+
+    /*
+    * Helper method to roate the string/word
+    * 
+    * @return void
+    */
+    private static void reverse(char[] letters, int start, int end){
         while (start < end) {
-            char temp = str[start];
-            str[start] = str[end];
-            str[end] = temp;
+            char temp = letters[start];
+            letters[start] = letters[end];
+            letters[end] = temp;
             start++;
             end--;
         }

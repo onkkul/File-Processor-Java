@@ -7,10 +7,46 @@ import wordPlay.util.FileProcessor;
 import wordPlay.util.WordProcessor;
 
 /**
- * @author John Doe
+ * @author Onkar Kulkarni
  *
  */
 public class Driver {
+
+	private static void executeProcess(String inputFile, String outputFile, String metricFile){
+        
+        /*
+	    * Starts file processing
+	    * @exception InvalidPathException On invalid path string.
+	    * @exception SecurityException On not having necessary read permissions to the input file.
+	    * @exception FileNotFoundException On input file not found.
+	    * @exception IOException On any I/O errors while reading lines from input file.
+	    *
+	    * @return void
+	    */
+
+        try {
+        	FileProcessor fileProcessor	= new FileProcessor(inputFile);
+        	WordProcessor wordProcessor = new WordProcessor(outputFile, metricFile);
+
+        	String word = fileProcessor.poll();
+        	int index = 1;
+          	while(word != null){
+        		String rotatedWordd = wordProcessor.processWord(word, index);
+        		// System.out.println( word + "\t" + rotatedWordd + "\t" + index);
+        		index++;
+        		if (word.endsWith(".")){
+        			index = 1;
+        		}
+        		word = fileProcessor.poll();
+        	}
+        }
+
+        catch(Exception e){
+			e.printStackTrace();
+        }
+
+	}
+
     public static void main(String[] args) {
 
         /*
@@ -19,38 +55,14 @@ public class Driver {
          * build.xml. To avoid that, below condition is used
          */
         if ((args.length != 3) || (args[0].equals("${input}")) || (args[1].equals("${output}")) || (args[2].equals("${metrics}"))) {
-                System.err.println("Error: Incorrect number of arguments. Program accepts 3 arguments.");
-                System.exit(0);
+            System.err.println("Error: Incorrect number of arguments. Program accepts 3 arguments.");
+            System.exit(0);
         }
+
         System.out.println("Hello World! Lets get started with the assignment");
 
-        try {
-        	FileProcessor fileProcessor	= new FileProcessor(args[0]);
-        	WordProcessor wordProcessor = new WordProcessor(args[1], args[2]);
+        executeProcess(args[0], args[1], args[2]);
 
-        	String word = fileProcessor.poll();
-        	int index = 1;
-          	while(word != null){
-
-        		String rotatedWordd = wordProcessor.rotateWord(word, index);
-        		System.out.print( word);
-        		System.out.print("\t" + rotatedWordd);
-        		System.out.print("\t" + index);
-        		System.out.println("");
-        		index++;
-        		
-        		if (word.endsWith(".")){
-        			index = 1;
-        		}
-
-        		word = fileProcessor.poll();
-        	}
-        }
-
-        catch(Exception e){
-			e.printStackTrace();
-			System.out.println("In main");
-        }
 
     }
 }
