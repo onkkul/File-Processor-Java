@@ -17,7 +17,7 @@ public class MatrixCalculator{
     private int numberOfSentenses;
 
 
-    /*
+    /**
     * Constructor for MatrixCalculator class
     * 
     * @return void
@@ -25,10 +25,12 @@ public class MatrixCalculator{
     public MatrixCalculator(){}
 
 
-    /*
+    /**
     * Method to calculate the statistics
     * 
     * @return void
+    *
+    * @exception ArithmeticException
     */
     public void calculateStats(String word) throws ArithmeticException{
 

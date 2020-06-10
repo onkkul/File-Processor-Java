@@ -21,9 +21,11 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     private FileWriter metricsWriter;
 
     /**
-    * Constructor for Results class, initializes empty files
+    * Constructor for Results class, initializes empty output files
     * 
     * @return void
+    *
+    * @exception IOException
     */
     public Results(String outPutFile, String metricsFile){
 
@@ -40,6 +42,13 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     }
 
 
+    /**
+    * Writes rotated words in the output file
+    * 
+    * @return void
+    *
+    * @exception IOException
+    */
     public void writeRotated(String rotatedWord) throws IOException{
 
         System.out.println(rotatedWord);
@@ -56,8 +65,18 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         catch(IOException writeRotatedError){
             writeRotatedError.printStackTrace();
         }
+
+        return;
     }
 	
+
+    /**
+    * Writes stats in the metrics file
+    * 
+    * @return void
+    *
+    * @exception IOException
+    */
     public void writeMatrix(float wordsPerSentense, float wordLength){
 
         float value = wordsPerSentense + wordLength;
@@ -72,5 +91,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         catch(IOException writeMetricsError){
             writeMetricsError.printStackTrace();
         }
+        
+        return;
     }
 }

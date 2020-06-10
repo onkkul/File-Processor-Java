@@ -14,7 +14,7 @@ public class Driver {
 
 	private static void executeProcess(String inputFile, String outputFile, String metricFile){
         
-        /*
+        /**
 	    * Starts file processing
 	    * @exception InvalidPathException On invalid path string.
 	    * @exception SecurityException On not having necessary read permissions to the input file.
@@ -62,19 +62,5 @@ public class Driver {
         System.out.println("Hello World! Lets get started with the assignment");
 
         executeProcess(args[0], args[1], args[2]);
-
-
     }
 }
-
-
-// /*
-// ant -buildfile wordPlay/src/build.xml run -Dinput="input.txt" -Doutput="output.txt" -Dmetrics="metrics.txt"
-
-// ant -buildfile wordPlay/src/build.xml run -Dinput="none.txt" -Doutput="output.txt" -Dmetrics="metrics.txt"
-
-// ant -buildfile wordPlay/src/build.xml run -Dinput="~/DP/Assignments/csx42-summer-2020-assign1-onkkul/wordPlay/src/" -Doutput="output.txt" -Dmetrics="metrics.txt"
-
-// ant -buildfile wordPlay/src/build.xml run -Dinput="~/DP/Assignments/csx42-summer-2020-assign1-onkkul/wordPlay/src/input.txt" -Doutput="output.txt" -Dmetrics="metrics.txt"
-
-// */

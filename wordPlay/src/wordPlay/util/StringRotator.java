@@ -9,14 +9,14 @@ import java.io.IOException;
 */
 public class StringRotator{
     
-    /*
+    /**
     * Constructor for WordProcessor class
     * 
     * @return void
     */
     public StringRotator(){}
 
-    /*
+    /**
     * Method to rotate the string/word
     * 
     * @return rotated word
@@ -35,7 +35,7 @@ public class StringRotator{
     }
 
 
-    /*
+    /**
     * Helper method to roate the string/word
     * 
     * @return void
@@ -48,6 +48,7 @@ public class StringRotator{
             start++;
             end--;
         }
+        return;
     }
 
 }

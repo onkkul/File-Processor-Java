@@ -35,7 +35,7 @@ public class WordProcessor{
     private MatrixCalculator matrixCalculator;
 
 
-    /*
+    /**
     * Constructor for WordProcessor class
     * 
     * @return void
@@ -65,7 +65,7 @@ public class WordProcessor{
         this.results = new Results(this.outPutFile, this.matrixFile);
     }
 
-    /*
+    /**
     * Method to rotate the given string
     *
     * @return rotated word
@@ -82,7 +82,7 @@ public class WordProcessor{
         return rotatedWord+fullStop;
     }
 
-    /*
+    /**
     * Method to calculate statics
     *
     * @return void
@@ -95,10 +95,11 @@ public class WordProcessor{
         float wordLength = this.matrixCalculator.wordLength;
 
         this.results.writeMatrix(wordsPerSentense, wordLength);
+        return;
     }
 
 
-    /*
+    /**
     * Method to process the word passed by fileProcessor
     *
     * @return rotated Word
