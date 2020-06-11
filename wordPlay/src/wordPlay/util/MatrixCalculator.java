@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
 package wordPlay.metrics;
+=======
+package wordPlay.util;
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 import java.io.IOException;
 
 
@@ -53,7 +57,11 @@ public class MatrixCalculator{
         }
 
 
+<<<<<<< HEAD
         // System.out.println(word +"\t" + word.length() + "\t" + this.numberOfWords + "\t" + this.sumOfWordLengths + "\t" + this.numberOfSentenses);
+=======
+        System.out.println(word +"\t" + word.length() + "\t" + this.numberOfWords + "\t" + this.sumOfWordLengths + "\t" + this.numberOfSentenses);
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
         return;
     }

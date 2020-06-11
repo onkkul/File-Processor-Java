@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 package wordPlay.handler;
 
 
+=======
+package wordPlay.util;
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 import java.util.Arrays;
 import java.io.IOException;
 
@@ -38,11 +42,19 @@ public class StringRotator{
 
 
     /**
+<<<<<<< HEAD
     * Helper method to rotate the string/word
     * 
     * @return void
     */
     private void reverse(char[] letters, int start, int end){
+=======
+    * Helper method to roate the string/word
+    * 
+    * @return void
+    */
+    private static void reverse(char[] letters, int start, int end){
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
         while (start < end) {
             char temp = letters[start];
             letters[start] = letters[end];

@@ -39,11 +39,25 @@ public final class FileProcessor {
     public FileProcessor(String inputFilePath)
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
 
+<<<<<<< HEAD
         if (!Files.exists(Paths.get(inputFilePath)) || inputFilePath.isEmpty()) {
             throw new FileNotFoundException("invalid input file or input file in incorrect location");
         }
 
         File fileToRead = new File(inputFilePath);
+=======
+        if (inputFilePath.isEmpty()){
+        	throw new FileNotFoundException("Input file name cannot be empty");                	
+        }
+        
+        String filePath = this.pwd + "/src/" + inputFilePath;
+
+        if (!Files.exists(Paths.get(filePath)) || filePath.isEmpty()) {
+            throw new FileNotFoundException("invalid input file or input file in incorrect location");
+        }
+
+        File fileToRead = new File(filePath);
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
         if (fileToRead.length() == 0){
         	throw new IOException("File is empty");
         }
@@ -54,7 +68,10 @@ public final class FileProcessor {
             words = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
         }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
     /**
     * Retrieves and returns the next word in the input file.

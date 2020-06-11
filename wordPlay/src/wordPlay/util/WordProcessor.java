@@ -1,8 +1,11 @@
 package wordPlay.util;
 
+<<<<<<< HEAD
 import wordPlay.handler.StringRotator;
 import wordPlay.metrics.MatrixCalculator;
 
+=======
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -46,12 +49,17 @@ public class WordProcessor{
     * @exception FileNotFoundException On input file not found.
     * @exception IOException On any I/O errors while reading lines from input file.
     */
+<<<<<<< HEAD
     public WordProcessor(String outPutFile, String matrixFile) throws IOException{
+=======
+    public WordProcessor(String outPutFile, String matrixFile) throws FileNotFoundException{
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
         if (outPutFile.isEmpty() || matrixFile.isEmpty()){
             throw new FileNotFoundException("output and matrix file name cannot be empty");                 
         }
 
+<<<<<<< HEAD
         // this.outPutFile = this.pwd + "/src/" + outPutFile;
         // this.matrixFile = this.pwd + "/src/" + matrixFile;
 
@@ -72,6 +80,22 @@ public class WordProcessor{
         catch (IOException wordProcessorError){
             wordProcessorError.printStackTrace();
         }
+=======
+        this.outPutFile = this.pwd + "/src/" + outPutFile;
+        this.matrixFile = this.pwd + "/src/" + matrixFile;
+
+        if (!Files.exists(Paths.get(this.outPutFile))) {
+            throw new FileNotFoundException("invalid output file or output file in incorrect location");
+        }
+
+        if (!Files.exists(Paths.get(this.matrixFile))) {
+            throw new FileNotFoundException("invalid matrix file or matrix file in incorrect location");
+        }
+
+        this.stringRotator = new StringRotator();
+        this.matrixCalculator = new MatrixCalculator();
+        this.results = new Results(this.outPutFile, this.matrixFile);
+>>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
     }
 
     /**
