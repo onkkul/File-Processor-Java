@@ -1,3 +1,4 @@
+
 package wordPlay.util;
 
 import java.io.BufferedReader;
@@ -22,45 +23,56 @@ import java.util.LinkedList;
 * @author Pradyumna Kaushik
 */
 public final class FileProcessor {
-	private BufferedReader reader;
-	private Queue<String> words;
+    private BufferedReader reader;
+    private Queue<String> words;
 
-	/**
-	* Constructs a FileProcessor that can stream the contents of the provided input file
-	* 	word by word.
-	* @exception InvalidPathException On invalid path string.
-	* @exception SecurityException On not having necessary read permissions to the input file.
-	* @exception FileNotFoundException On input file not found.
-	* @exception IOException On any I/O errors while reading lines from input file.
-	*/
-	public FileProcessor(String inputFilePath)
-		throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
+    private String pwd = System.getProperty("user.dir");
 
-		if (!Files.exists(Paths.get(inputFilePath))) {
-			throw new FileNotFoundException("invalid input file or input file in incorrect location");
-		}
+    /**
+    * Constructs a FileProcessor that can stream the contents of the provided input file
+    *       word by word.
+    * @exception InvalidPathException On invalid path string.
+    * @exception SecurityException On not having necessary read permissions to the input file.
+    * @exception FileNotFoundException On input file not found.
+    * @exception IOException On any I/O errors while reading lines from input file.
+    */
+    public FileProcessor(String inputFilePath)
+            throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
 
-		reader = new BufferedReader(new FileReader(new File(inputFilePath)));
-		String line = reader.readLine();
-		if (null != line) {
-			words = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
-		}
-	}
+        if (!Files.exists(Paths.get(inputFilePath)) || inputFilePath.isEmpty()) {
+            throw new FileNotFoundException("invalid input file or input file in incorrect location");
+        }
 
-	/**
-	* Retrieves and returns the next word in the input file.
-	*
-	* @return String The next word read from the input file. If the word is the last
-	* 	word in a sentence, it would include the period character.
-	* @exception IOException On error encountered when reading from input file.
-	*/
-	public String poll() throws IOException {
-		if (null == words) return null;
-		if (0 == words.size()) {
-			String nextLine = reader.readLine();
-			if (null == nextLine) return null;
-			words.addAll(Arrays.asList(nextLine.split("\\s+")));
-		}
-		return words.remove();
-	}
+        File fileToRead = new File(inputFilePath);
+        if (fileToRead.length() == 0){
+        	throw new IOException("File is empty");
+        }
+
+        reader = new BufferedReader(new FileReader(fileToRead));
+        String line = reader.readLine();
+        if (null != line) {
+            words = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
+        }
+    }
+    
+
+    /**
+    * Retrieves and returns the next word in the input file.
+    *
+    * @return String The next word read from the input file. If the word is the last
+    *       word in a sentence, it would include the period character.
+    * @exception IOException On error encountered when reading from input file.
+    */
+    public String poll() throws IOException {
+        if (null == words) {
+        	return null;
+        }
+        if (0 == words.size()) {
+            String nextLine = reader.readLine();
+            if (null == nextLine) return null;
+            words.addAll(Arrays.asList(nextLine.split("\\s+")));
+        }
+        return words.remove();
+    }
+
 }
