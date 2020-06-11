@@ -1,4 +1,4 @@
-package wordPlay.util;
+package wordPlay.metrics;
 import java.io.IOException;
 
 

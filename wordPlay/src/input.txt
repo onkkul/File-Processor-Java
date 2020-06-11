@@ -1,3 +1,0 @@
-I am onkar.
-This is my file.
-I am trying to read it word by word.
