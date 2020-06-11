@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Queue;
 import java.util.LinkedList;
 
+
 /**
 * FileProcessor is a utility to be used to read in the contents of the input file.
 *
@@ -26,7 +27,6 @@ public final class FileProcessor {
     private BufferedReader reader;
     private Queue<String> words;
 
-    private String pwd = System.getProperty("user.dir");
 
     /**
     * Constructs a FileProcessor that can stream the contents of the provided input file
@@ -40,7 +40,7 @@ public final class FileProcessor {
             throws InvalidPathException, SecurityException, FileNotFoundException, IOException {
 
         if (!Files.exists(Paths.get(inputFilePath)) || inputFilePath.isEmpty()) {
-            throw new FileNotFoundException("invalid input file or input file in incorrect location");
+            throw new FileNotFoundException("invalid input file(emptry) or input file in incorrect location");
         }
 
         File fileToRead = new File(inputFilePath);

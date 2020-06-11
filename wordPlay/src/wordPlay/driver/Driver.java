@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.FileInputStream;
 import wordPlay.util.FileProcessor;
 import wordPlay.util.WordProcessor;
+import wordPlay.util.Results;
 
 /**
  * @author Onkar Kulkarni
@@ -31,11 +32,9 @@ public class Driver {
         	String word = fileProcessor.poll();
         	int index = 1;
           	while(word != null){
-          		System.out.println(word);
           		if(!word.isEmpty()){
 
 	        		String rotatedWordd = wordProcessor.processWord(word, index);
-	        		// System.out.println( word + "\t" + rotatedWordd + "\t" + index);
 	        		index++;
 	        		if (word.endsWith(".")){
 	        			index = 1;
@@ -43,7 +42,14 @@ public class Driver {
 	        	}
         		word = fileProcessor.poll();
         	}
+
+
+        	Results writeResults = new Results(outputFile, metricFile);
+
+        	writeResults.writeToFile(wordProcessor.sentenseToWrite ,wordProcessor.wordsPerSentense, wordProcessor.wordLength);
+        	writeResults.writeToStdout();
         }
+
 
         catch(Exception e){
 			e.printStackTrace();
@@ -53,7 +59,7 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        /*
+        /**
          * As the build.xml specifies the arguments as input,output or metrics, in case the
          * argument value is not given java takes the default value specified in
          * build.xml. To avoid that, below condition is used

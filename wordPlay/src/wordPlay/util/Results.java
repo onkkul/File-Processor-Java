@@ -3,9 +3,13 @@ package wordPlay.util;
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 
 /**
@@ -18,8 +22,10 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     private File outPutFile;
     private File metricsFile;
 
+    private BufferedReader reader;
     private BufferedWriter outputWriter;
     private FileWriter metricsWriter;
+
 
     /**
     * Constructor for Results class, initializes empty output files
@@ -30,16 +36,10 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     */
     public Results(String outPutFile, String metricsFile) throws InvalidPathException, SecurityException, IOException {
 
-        // this.outPutFile = outPutFile;
-        
 
-        // try{
-        //     // new FileWriter(outPutFile, false).close();
-        //     new FileWriter(metricsFile, false).close();
-        // }
-        // catch(IOException resultsFileNotEmpty){
-        //     resultsFileNotEmpty.printStackTrace();
-        // } 
+        if (outPutFile.isEmpty() || metricsFile.isEmpty()){
+            throw new FileNotFoundException("output and matrix file name cannot be empty");                 
+        }
 
         try {
             
@@ -75,16 +75,10 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     *
     * @exception IOException
     */
-    public void writeRotated(String rotatedWord) throws IOException{
-
-        System.out.println(rotatedWord);
-
-        String fullStop = " ";
-        if (rotatedWord.endsWith(".")){ fullStop = "\n";}
-
+    public void writeRotated(String rotatedWord){
         try{
             this.outputWriter = new BufferedWriter(new FileWriter(this.outPutFile, true));
-            outputWriter.write(rotatedWord+fullStop);
+            outputWriter.write(rotatedWord);
             outputWriter.close();
         }
 
@@ -94,7 +88,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
         return;
     }
-	
+
 
     /**
     * Writes stats in the metrics file
@@ -121,4 +115,59 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         
         return;
     }
+
+
+    /**
+    * implements the writeToFile method from FileDisplayInterface
+    *
+    * @return void
+    *
+    */
+    @Override
+    public void writeToFile(String rotatedValues, float wordPerSentence, float wordLength){
+        writeRotated(rotatedValues);
+        writeMatrix(wordPerSentence, wordLength);
+        return;
+    }
+
+
+    /**
+    * implements the writeToStdout method from StdoutDisplayInterface
+    *
+    * @return void
+    *
+    * @exception IOException
+    */
+    @Override
+    public void writeToStdout(){
+
+        try{
+
+
+            Scanner myReader = new Scanner(this.outPutFile);
+            System.out.println("\n##OUTPUT FILE##:\n");
+            String data = myReader.nextLine();
+            while (myReader.hasNextLine()) {
+                data = data + "\n" + myReader.nextLine();
+            }
+            myReader.close();
+            System.out.println(data);
+
+
+            myReader = new Scanner(this.metricsFile);
+            System.out.println("\n##METRICS FILE##:\n");
+            String metrix_data = myReader.nextLine();
+            while (myReader.hasNextLine()) {
+                metrix_data = metrix_data + "\n" + myReader.nextLine();
+            }
+            myReader.close();
+            System.out.println(metrix_data);
+        }
+        catch (IOException readerError){
+            readerError.printStackTrace();    
+        }
+
+        return;
+    }
+
 }

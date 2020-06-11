@@ -1,6 +1,9 @@
 package wordPlay.handler;
 import java.util.Arrays;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
 * StringRotator is a utility to be used to rotate the word.
@@ -9,12 +12,16 @@ import java.io.IOException;
 */
 public class StringRotator{
     
+    private Pattern pattern;
     /**
     * Constructor for WordProcessor class
     * 
     * @return void
     */
-    public StringRotator(){}
+    public StringRotator(){
+        this.pattern = Pattern.compile("[^A-Za-z0-9]");
+    }
+
 
     /**
     * Method to rotate the string/word
@@ -22,6 +29,17 @@ public class StringRotator{
     * @return rotated word
     */
     public String rotateString(String word, int index){ 
+
+
+        try{
+            Matcher match = pattern.matcher(word);
+            boolean val = match.find();
+            if (val == true)
+                System.out.println("Special characters found in the string.");
+        }
+        catch (NullPointerException emptryWord){
+            emptryWord.printStackTrace();
+        }
         char[] letters = word.toCharArray();
         int len = letters.length;
         index %= len;

@@ -51,9 +51,6 @@ public class MatrixCalculator{
             calculationError.printStackTrace();
         }
 
-
-        // System.out.println(word +"\t" + word.length() + "\t" + this.numberOfWords + "\t" + this.sumOfWordLengths + "\t" + this.numberOfSentenses);
-
         return;
     }
 

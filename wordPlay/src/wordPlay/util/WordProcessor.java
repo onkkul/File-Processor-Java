@@ -38,6 +38,11 @@ public class WordProcessor{
     private MatrixCalculator matrixCalculator;
 
 
+    public float wordsPerSentense;
+    public float wordLength;
+    public String sentenseToWrite = "";
+
+
     /**
     * Constructor for WordProcessor class
     * 
@@ -48,31 +53,27 @@ public class WordProcessor{
     */
     public WordProcessor(String outPutFile, String matrixFile) throws IOException{
 
-        if (outPutFile.isEmpty() || matrixFile.isEmpty()){
-            throw new FileNotFoundException("output and matrix file name cannot be empty");                 
-        }
-
-        // this.outPutFile = this.pwd + "/src/" + outPutFile;
-        // this.matrixFile = this.pwd + "/src/" + matrixFile;
-
-        // if (!Files.exists(Paths.get(this.outPutFile))) {
-        //     throw new FileNotFoundException("invalid output file or output file in incorrect location");
-        // }
-
-        // if (!Files.exists(Paths.get(this.matrixFile))) {
-        //     throw new FileNotFoundException("invalid matrix file or matrix file in incorrect location");
-        // }
-
         this.stringRotator = new StringRotator();
         this.matrixCalculator = new MatrixCalculator();
-
-        try{
-            this.results = new Results(outPutFile, matrixFile);
-        }
-        catch (IOException wordProcessorError){
-            wordProcessorError.printStackTrace();
-        }
     }
+
+
+    /**
+    * Method to store the rotated string
+    *
+    * @return void
+    *
+    * @exception IOException
+    */
+    private void storeRotated(String rotatedWord){
+
+        String fullStop = " ";
+        if (rotatedWord.endsWith(".")){ fullStop = "\n";}
+
+        this.sentenseToWrite = this.sentenseToWrite + rotatedWord + fullStop;
+        return;
+    }
+
 
     /**
     * Method to rotate the given string
@@ -86,10 +87,11 @@ public class WordProcessor{
         word = word.replace(".", "");
         String rotatedWord = this.stringRotator.rotateString(word, index);
         
-        this.results.writeRotated(rotatedWord+fullStop);
+        storeRotated(rotatedWord+fullStop);
 
         return rotatedWord+fullStop;
     }
+
 
     /**
     * Method to calculate statics
@@ -100,10 +102,9 @@ public class WordProcessor{
     */
     private void calculateMatrix(String word) throws Exception, IOException{
         this.matrixCalculator.calculateStats(word);
-        float wordsPerSentense = this.matrixCalculator.wordsPerSentense;
-        float wordLength = this.matrixCalculator.wordLength;
+        this.wordsPerSentense = this.matrixCalculator.wordsPerSentense;
+        this.wordLength = this.matrixCalculator.wordLength;
 
-        this.results.writeMatrix(wordsPerSentense, wordLength);
         return;
     }
 
