@@ -1,6 +1,8 @@
 # CSX42: Assignment 1
 ## Name: 
-
+    - Onkar Kulkarni </br>
+## Email:
+    - okulkar4@binghamton.edu </br>
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
 
@@ -33,6 +35,8 @@ Note: Arguments accept the absolute path of the files.
 
 -----------------------------------------------------------------------
 ## Description:
+    - The java build rotates each word of the sentense by index number of positions.
+    - Also returns two statistics: average number of words per sentense and avg word length.
 
 
 -----------------------------------------------------------------------
@@ -45,6 +49,6 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
-Date: [ADD_DATE_HERE]
+Date: 06/10/2020
 
 

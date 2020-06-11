@@ -13,18 +13,16 @@ import wordPlay.util.Results;
  */
 public class Driver {
 
+    /**
+    * Starts file processing
+    * @exception InvalidPathException On invalid path string.
+    * @exception SecurityException On not having necessary read permissions to the input file.
+    * @exception FileNotFoundException On input file not found.
+    * @exception IOException On any I/O errors while reading lines from input file.
+    *
+    * @return void
+    */
 	private static void executeProcess(String inputFile, String outputFile, String metricFile){
-        
-        /**
-	    * Starts file processing
-	    * @exception InvalidPathException On invalid path string.
-	    * @exception SecurityException On not having necessary read permissions to the input file.
-	    * @exception FileNotFoundException On input file not found.
-	    * @exception IOException On any I/O errors while reading lines from input file.
-	    *
-	    * @return void
-	    */
-
         try {
         	FileProcessor fileProcessor	= new FileProcessor(inputFile);
         	WordProcessor wordProcessor = new WordProcessor(outputFile, metricFile);

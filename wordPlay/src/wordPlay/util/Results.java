@@ -63,8 +63,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         catch (IOException fileCreationError) {
           fileCreationError.printStackTrace();
         }
-
-
     }
 
 
@@ -142,8 +140,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     public void writeToStdout(){
 
         try{
-
-
             Scanner myReader = new Scanner(this.outPutFile);
             System.out.println("\n##OUTPUT FILE##:\n");
             String data = myReader.nextLine();
@@ -152,7 +148,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
             }
             myReader.close();
             System.out.println(data);
-
 
             myReader = new Scanner(this.metricsFile);
             System.out.println("\n##METRICS FILE##:\n");

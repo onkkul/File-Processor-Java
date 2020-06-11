@@ -127,6 +127,5 @@ public class WordProcessor{
 
         return rotatedWord;
     }
-
-
 }
+
