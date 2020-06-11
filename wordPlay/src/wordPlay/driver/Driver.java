@@ -31,8 +31,7 @@ public class Driver {
         	String word = fileProcessor.poll();
         	int index = 1;
           	while(word != null){
-<<<<<<< HEAD
-          		System.out.println( word);
+          		System.out.println(word);
           		if(!word.isEmpty()){
 
 	        		String rotatedWordd = wordProcessor.processWord(word, index);
@@ -42,14 +41,6 @@ public class Driver {
 	        			index = 1;
 	        		}
 	        	}
-=======
-        		String rotatedWordd = wordProcessor.processWord(word, index);
-        		// System.out.println( word + "\t" + rotatedWordd + "\t" + index);
-        		index++;
-        		if (word.endsWith(".")){
-        			index = 1;
-        		}
->>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
         		word = fileProcessor.poll();
         	}
         }

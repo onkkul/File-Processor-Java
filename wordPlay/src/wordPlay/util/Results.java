@@ -5,10 +5,7 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.nio.file.InvalidPathException;
-=======
->>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
 
 /**
@@ -18,13 +15,8 @@ import java.nio.file.InvalidPathException;
 */
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
-<<<<<<< HEAD
     private File outPutFile;
     private File metricsFile;
-=======
-    private String outPutFile;
-    private String metricsFile;
->>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
 
     private BufferedWriter outputWriter;
     private FileWriter metricsWriter;
@@ -36,7 +28,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
     *
     * @exception IOException
     */
-<<<<<<< HEAD
     public Results(String outPutFile, String metricsFile) throws InvalidPathException, SecurityException, IOException {
 
         // this.outPutFile = outPutFile;
@@ -74,20 +65,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
         }
 
 
-=======
-    public Results(String outPutFile, String metricsFile){
-
-        this.outPutFile = outPutFile;
-        this.metricsFile = metricsFile;
-
-        try{
-            new FileWriter(outPutFile, false).close();
-            new FileWriter(metricsFile, false).close();
-        }
-        catch(IOException resultsFileNotEmpty){
-            resultsFileNotEmpty.printStackTrace();
-        } 
->>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
     }
 
 
@@ -132,14 +109,9 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 
         try{
             this.metricsWriter = new FileWriter(this.metricsFile);
-<<<<<<< HEAD
 
             metricsWriter.write("AVG_NUM_WORDS_PERSENTENCE = " + String.format("%.2f", wordsPerSentense));
             metricsWriter.write("\nAVG_WORD_LENGTH = " + String.format("%.2f", wordLength)+"\n");
-=======
-            metricsWriter.write("AVG_NUM_WORDS_PERSENTENCE = " + Float.toString(wordsPerSentense));
-            metricsWriter.write("\nAVG_WORD_LENGTH = " + Float.toString(wordLength)+"\n");
->>>>>>> 4b27da8dcee0b3b215ec9059ce514d68e8b8f890
             metricsWriter.close();
         }
 
